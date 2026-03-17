@@ -1,4 +1,4 @@
-namespace TP1.5_Martinez_Waserman
+namespace TP1_Martinez_Waserman
 {
     public class Alumno
     {

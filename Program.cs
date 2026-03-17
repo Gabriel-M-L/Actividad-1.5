@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
-namespace tp0;
-
+namespace TP1_Martinez_Waserman;
+//nunca confiar en un comando de gabi 
+//nunca
 class Program
 {
     static Curso curso = new Curso();
@@ -31,8 +32,8 @@ class Program
                 {
                     
                     case 1:
-                    dni = ingresarInt("Ingrese el DNI del nuevo alumno: ")
-                    name = ingresarString("Ingrese el nombre del nuevo alumno: ")
+                    dni = ingresarInt("Ingrese el DNI del nuevo alumno: ");
+                    name = ingresarString("Ingrese el nombre del nuevo alumno: ");
                     if (curso.agregarAlumno(dni, name)){
                         Console.WriteLine("Se agrego el alumno correctamente.");
                     }
@@ -42,6 +43,7 @@ class Program
                     break;
 
                     case 2:
+
                     break;
 
                     case 3:

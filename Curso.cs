@@ -1,14 +1,14 @@
-namespace TP1.5_Martinez_Waserman{
+namespace TP1_Martinez_Waserman{
     public class Curso
     {
         List<Alumno> alumnos;
 
         public Curso()
         {
-            this.alumnos = new List<Alumno>;
+            this.alumnos = new List<Alumno>();
         }
 
-        public bool agregarAlumno(int dni, string name)
+        public bool agregarAlumno(int dni, string name) //gabi casi rompe todas las variables :/
         {
             bool seAgrego = false;
             Alumno alumno = buscarAlumno(dni);
@@ -20,7 +20,7 @@ namespace TP1.5_Martinez_Waserman{
             return seAgrego;
         }
         
-        private Alumno buscarAlumno(int dni)
+        public Alumno buscarAlumno(int dni)
         {
             Alumno alumno = null;
             int i = 0;
