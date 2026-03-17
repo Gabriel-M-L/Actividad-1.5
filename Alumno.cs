@@ -12,7 +12,9 @@ namespace TP1.5_Martinez_Waserman
             this.name = name;
             this.cantFaltas = 0;
         } 
+        public bool compDni(int dni){
+            return this.dni == dni;
+        }
 
-        
     }
 }

@@ -7,5 +7,30 @@ namespace TP1.5_Martinez_Waserman{
         {
             this.alumnos = new List<Alumno>;
         }
+
+        public bool agregarAlumno(int dni, string name)
+        {
+            bool seAgrego = false;
+            Alumno alumno = buscarAlumno(dni);
+            if(alumno == null)
+            {
+                alumnos.Add(new Alumno(dni, name));
+                seAgrego = true;
+            }
+            return seAgrego;
+        }
+        
+        private Alumno buscarAlumno(int dni)
+        {
+            Alumno alumno = null;
+            int i = 0;
+            while (i < alumnos.Count && !alumnos[i].compDni(dni))
+            {
+                i++;
+            }
+            if (i < alumnos.Count)
+                alumno = alumnos[i];
+            return alumno;
+        }
     }
 }

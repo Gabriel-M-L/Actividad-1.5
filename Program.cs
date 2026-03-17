@@ -3,6 +3,7 @@ namespace tp0;
 
 class Program
 {
+    static Curso curso = new Curso();
     static void Main(string[] args)
     {
         List<string> opciones = new List<string>(){"Agregar alumno.", "Buscar alumno por su DNI.", "Agregar falta.", "Mostrar alumnos.", "Mostrar alumons libres", "Salir."};
@@ -24,12 +25,20 @@ class Program
             {
                 Console.WriteLine("\nla opcion elegida fue " + opciones[nElegido - 1]);
 
-                int ID;
+                int dni;
+                string name; //gabi no me dejaba q este en ingles
                 switch(nElegido)
                 {
                     
                     case 1:
-                    
+                    dni = ingresarInt("Ingrese el DNI del nuevo alumno: ")
+                    name = ingresarString("Ingrese el nombre del nuevo alumno: ")
+                    if (curso.agregarAlumno(dni, name)){
+                        Console.WriteLine("Se agrego el alumno correctamente.");
+                    }
+                    else {
+                        Console.WriteLine("Ese alumno ya exite.");
+                    }
                     break;
 
                     case 2:
@@ -71,13 +80,7 @@ class Program
         private static string ingresarString(string v)
         {
             Console.Write(v);
-            string texto = Console.ReadLine().ToLower();
-            while(texto != "bicicleta" && texto!="monopatin")
-            {
-                Console.WriteLine("Ingrese los datos correctamente.");
-                Console.WriteLine(v);
-                texto = Console.ReadLine().ToLower();
-            }
+            string texto = Console.ReadLine().ToUpper();
             return texto;
         }
      private static void MostrarMenu(List<string> opciones, int nSeleccionado, string v)
@@ -90,3 +93,4 @@ class Program
             Console.WriteLine(v);
         }
 }
+//probablemente tambien deberia poner el resto de variables en ingles pero bueno
