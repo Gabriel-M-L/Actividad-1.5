@@ -16,5 +16,22 @@ namespace TP1_Martinez_Waserman
             return this.dni == dni;
         }
 
+        public string toString(){
+            return "Nombre: " + name + ".\n DNI: " + dni + ". \n Cantidad de faltas: " + cantFaltas + ".";
+        }
+
+        public void sumarFalta(double falta){
+            cantFaltas += falta;
+        }
+
+        public bool estoyLibre(){
+            return cantFaltas>15;
+        }
+
+        public int getDni()
+        {
+            return dni;
+        }
+
     }
 }

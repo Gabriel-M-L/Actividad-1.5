@@ -32,5 +32,20 @@ namespace TP1_Martinez_Waserman{
                 alumno = alumnos[i];
             return alumno;
         }
+
+        public List<Alumno> alumnosInscriptos(){
+            return alumnos;
+        }
+
+        public void cambiarFalta(Alumno alumno)
+        {
+            int i = 0;
+            while (i < alumnos.Count && !alumnos[i].compDni(alumno.getDni()))
+            {
+                i++;
+            }
+            if (i < alumnos.Count)
+                alumnos[i] = alumno;
+        }
     }
 }

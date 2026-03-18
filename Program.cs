@@ -28,6 +28,8 @@ class Program
 
                 int dni;
                 string name; //gabi no me dejaba q este en ingles
+                double falta;
+                Alumno alumno;
                 switch(nElegido)
                 {
                     
@@ -43,16 +45,42 @@ class Program
                     break;
 
                     case 2:
-
+                    dni = ingresarInt("Ingrese el DNI del alumno que esta buscando: ");
+                    alumno = curso.buscarAlumno(dni);
+                    if (alumno != null){
+                        Console.WriteLine(alumno.toString());
+                    }
+                    else{
+                        Console.WriteLine("Ese alumno no existe.");
+                    }
                     break;
 
                     case 3:
+                    dni = ingresarInt("Ingrese el DNI del alumno que falto: ");
+                    alumno = curso.buscarAlumno(dni);
+                    if(alumno != null){
+                        falta = ingresarDouble("Ingrese la cantidad de faltas(1 o 0,5): ", 1, 0.5);
+                        alumno.sumarFalta(falta);
+                        curso.cambiarFalta(alumno);
+                        Console.WriteLine("Se sumaron las faltas correctamente.");
+                    }
+                    else{
+                        Console.WriteLine("Ese alumno no existe.");
+                    }
                     break;
 
-                    case 4:             
+                    case 4:  
+                    foreach(Alumno alumno0 in curso.alumnosInscriptos()){
+                        Console.WriteLine(alumno0.toString());
+                    }           
                     break;
 
                     case 5:
+                    foreach(Alumno alumno0 in curso.alumnosInscriptos()){
+                        if(alumno0.estoyLibre()){
+                            Console.WriteLine(alumno0.toString());
+                        }
+                    } 
                     break;
                 }
             }
@@ -73,10 +101,15 @@ class Program
             int numero = int.Parse(Console.ReadLine());
             return numero;
         }
-         private static double ingresarDouble(string v)
+         private static double ingresarDouble(string v, double n1, double n2)
         {
             Console.Write(v);
             double numero = double.Parse(Console.ReadLine());
+            while(numero != n1 && numero != n2){
+                Console.WriteLine("ingrese los datos correctamente");
+                Console.Write(v);
+                numero = double.Parse(Console.ReadLine());
+            }
             return numero;
         }
         private static string ingresarString(string v)
