@@ -61,7 +61,7 @@ class Program
                     if(alumno != null){
                         falta = ingresarDouble("Ingrese la cantidad de faltas(1 o 0,5): ", 1, 0.5);
                         alumno.sumarFalta(falta);
-                        curso.cambiarFalta(alumno);
+                        curso.cambiarFalta(dni, alumno);
                         Console.WriteLine("Se sumaron las faltas correctamente.");
                     }
                     else{
@@ -70,15 +70,17 @@ class Program
                     break;
 
                     case 4:  
-                    foreach(Alumno alumno0 in curso.alumnosInscriptos()){
-                        Console.WriteLine(alumno0.toString());
+                    foreach(var alumno0 in curso.alumnosInscriptos()){
+                        Console.WriteLine("DNI: "alumno0.Key + ".");
+                        Console.WriteLine(alumno0.Value.toString());
                     }           
                     break;
 
                     case 5:
-                    foreach(Alumno alumno0 in curso.alumnosInscriptos()){
-                        if(alumno0.estoyLibre()){
-                            Console.WriteLine(alumno0.toString());
+                    foreach(var alumno0 in curso.alumnosInscriptos()){
+                        if(alumno0.Value.estoyLibre()){
+                            Console.WriteLine("DNI: "alumno0.Key + ".");
+                            Console.WriteLine(alumno0.Value.toString());
                         }
                     } 
                     break;

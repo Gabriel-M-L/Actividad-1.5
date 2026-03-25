@@ -1,51 +1,42 @@
+
 namespace TP1_Martinez_Waserman{
     public class Curso
     {
-        List<Alumno> alumnos;
+        private Dictionary <int, Alumno> alumnos;
 
         public Curso()
         {
-            this.alumnos = new List<Alumno>();
+            this.alumnos = new Dictionary<int, Alumno>();
         }
 
         public bool agregarAlumno(int dni, string name) //gabi casi rompe todas las variables :/
         {
             bool seAgrego = false;
-            Alumno alumno = buscarAlumno(dni);
-            if(alumno == null)
+            if(!alumnos.ContainsKey(dni))
             {
-                alumnos.Add(new Alumno(dni, name));
+                alumnos.Add(dni, new Alumno(name));
                 seAgrego = true;
             }
             return seAgrego;
         }
-        
+
         public Alumno buscarAlumno(int dni)
         {
             Alumno alumno = null;
-            int i = 0;
-            while (i < alumnos.Count && !alumnos[i].compDni(dni))
+            if(alumnos.ContainsKey(dni))
             {
-                i++;
+                alumno = alumnos[dni];
             }
-            if (i < alumnos.Count)
-                alumno = alumnos[i];
             return alumno;
         }
 
-        public List<Alumno> alumnosInscriptos(){
+        public Dictionary <int, Alumno> alumnosInscriptos(){
             return alumnos;
         }
 
-        public void cambiarFalta(Alumno alumno)
+        public void cambiarFalta(int dni, Alumno alumno)
         {
-            int i = 0;
-            while (i < alumnos.Count && !alumnos[i].compDni(alumno.getDni()))
-            {
-                i++;
-            }
-            if (i < alumnos.Count)
-                alumnos[i] = alumno;
+            alumnos[dni] = alumno;
         }
     }
 }
